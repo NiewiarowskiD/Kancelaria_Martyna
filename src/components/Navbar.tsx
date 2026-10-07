@@ -79,7 +79,7 @@ export default function Navbar() {
               src="/logo.svg"
               alt="Martyna Obecna – Kancelaria Prawna"
               sx={{
-                height: { xs: 42, md: 42, lg: 60 },
+                height: { xs: 30, md: 30, lg: 42 },
                 width: 'auto',
                 display: 'block',
               }}
