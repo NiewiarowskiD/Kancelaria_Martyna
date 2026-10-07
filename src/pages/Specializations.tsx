@@ -184,7 +184,7 @@ export default function Specializations() {
                       whiteSpace: 'nowrap',
                       px: 2.2,
                       py: { xs: 1.1, md: 1.6 },
-                      borderRadius: { xs: '999px', md: '16px' },
+                      borderRadius: '6px',
                       color: on ? 'text.primary' : 'text.secondary',
                       bgcolor: on ? 'background.paper' : 'transparent',
                       border: '1px solid',
@@ -236,7 +236,7 @@ export default function Specializations() {
                           bgcolor: 'background.paper',
                           border: '1px solid',
                           borderColor: 'divider',
-                          borderRadius: '28px',
+                          borderRadius: '8px',
                           p: { xs: 3, md: 5 },
                           boxShadow: '0 20px 50px rgba(20,35,43,0.06)',
                         }}
@@ -246,7 +246,7 @@ export default function Specializations() {
                             sx={{
                               width: 56,
                               height: 56,
-                              borderRadius: '16px',
+                              borderRadius: '6px',
                               bgcolor: 'rgba(47,125,115,0.10)',
                               display: 'grid',
                               placeItems: 'center',
@@ -306,7 +306,7 @@ export default function Specializations() {
                               <Box
                                 sx={{
                                   bgcolor: COLORS.mist,
-                                  borderRadius: '20px',
+                                  borderRadius: '6px',
                                   p: 2.5,
                                   height: '100%',
                                 }}

@@ -43,7 +43,7 @@ let theme = createTheme({
     },
     divider: COLORS.line,
   },
-  shape: { borderRadius: 14 },
+  shape: { borderRadius: 4 },
   typography: {
     fontFamily: BODY_FONT,
     h1: { fontFamily: HEADING_FONT, fontWeight: 600, fontSize: '3rem', letterSpacing: '-0.02em' },
@@ -72,13 +72,13 @@ let theme = createTheme({
     MuiButton: {
       defaultProps: { disableElevation: true },
       styleOverrides: {
-        root: { borderRadius: 999, padding: '11px 28px' },
+        root: { borderRadius: '4px', padding: '11px 28px' },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 20,
+          borderRadius: 6,
           boxShadow: '0 10px 40px rgba(20,35,43,0.06)',
         },
       },

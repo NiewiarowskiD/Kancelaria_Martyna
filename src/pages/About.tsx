@@ -124,7 +124,7 @@ export default function About() {
                   sx={{
                     height: '100%',
                     p: 4,
-                    borderRadius: '24px',
+                    borderRadius: '8px',
                     bgcolor: 'background.paper',
                     border: '1px solid',
                     borderColor: 'divider',
@@ -134,7 +134,7 @@ export default function About() {
                     sx={{
                       width: 52,
                       height: 52,
-                      borderRadius: '16px',
+                      borderRadius: '6px',
                       bgcolor: 'rgba(47,125,115,0.10)',
                       display: 'grid',
                       placeItems: 'center',

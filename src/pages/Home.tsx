@@ -85,7 +85,7 @@ function StoryScroll() {
               top: 110,
               height: 'calc(100vh - 160px)',
               maxHeight: 640,
-              borderRadius: '32px',
+              borderRadius: '8px',
               overflow: 'hidden',
               boxShadow: '0 30px 60px rgba(20,35,43,0.15)',
             }}
@@ -138,7 +138,7 @@ function StoryScroll() {
                   width: '100%',
                   height: 240,
                   objectFit: 'cover',
-                  borderRadius: '24px',
+                  borderRadius: '8px',
                   mb: 3,
                 }}
               />
@@ -302,7 +302,7 @@ export default function Home() {
                       textDecoration: 'none',
                       color: 'inherit',
                       bgcolor: 'background.paper',
-                      borderRadius: '24px',
+                      borderRadius: '8px',
                       p: 4,
                       border: '1px solid',
                       borderColor: 'divider',
@@ -317,7 +317,7 @@ export default function Home() {
                       sx={{
                         width: 56,
                         height: 56,
-                        borderRadius: '16px',
+                        borderRadius: '6px',
                         bgcolor: 'rgba(47,125,115,0.10)',
                         display: 'grid',
                         placeItems: 'center',

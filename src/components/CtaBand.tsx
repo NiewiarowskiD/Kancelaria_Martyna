@@ -22,7 +22,7 @@ export default function CtaBand({
         maxWidth: 1000,
         mx: 'auto',
         textAlign: 'center',
-        borderRadius: 6,
+        borderRadius: '8px',
         px: { xs: 3, md: 8 },
         py: { xs: 5, md: 7 },
         background: `linear-gradient(135deg, ${COLORS.mint} 0%, #F3F9F7 100%)`,
