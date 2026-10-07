@@ -31,7 +31,7 @@ interface ChatMessage {
 }
 
 const GREETING =
-  'Dzień dobry! Tu Martyna Obecna. Napisz, w czym mogę pomóc. Odpowiem na Twój adres e-mail, zwykle w ciągu 24 godzin.';
+  'Dzień dobry! Opisz tutaj krótko swój problem prawny. Po wiadomości poproszę o numer telefonu i adres e-mail, aby kancelaria mogła się z Tobą skontaktować.';
 
 const QUICK_REPLIES = [
   'Chcę umówić poradę prawną',
@@ -51,6 +51,7 @@ export default function ChatWidget() {
   const [userMessage, setUserMessage] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(''); // pułapka na boty (honeypot)
   const [error, setError] = useState<string | null>(null);
@@ -120,7 +121,7 @@ export default function ChatWidget() {
       () =>
         add(
           'bot',
-          'Dziękuję za wiadomość. Podaj proszę imię i adres e-mail, żebym mogła Ci odpowiedzieć.',
+          'Dziękuję za wiadomość. Zostaw proszę swoje imię, numer telefonu oraz adres e-mail, a kancelaria skontaktuje się z Tobą.',
         ),
       450,
     );
@@ -135,18 +136,21 @@ export default function ChatWidget() {
     if (trimmedName.length < 2) return setError('Podaj imię.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(trimmedEmail))
       return setError('Podaj poprawny adres e-mail.');
+    const trimmedPhone = phone.trim();
+    if (trimmedPhone.replace(/\D/g, '').length < 9) return setError('Podaj poprawny numer telefonu.');
     if (!consent) return setError('Zaznacz zgodę na kontakt w tej sprawie.');
     setStep('sending');
     try {
       await sendContact({
         name: trimmedName,
         email: trimmedEmail,
+        phone: trimmedPhone,
         message: `[Wiadomość z czatu na stronie]\n\n${userMessage}`,
       });
       setStep('sent');
       add(
         'bot',
-        `Wiadomość wysłana. Odpowiem na adres ${trimmedEmail}, zwykle w ciągu 24 godzin. Jeśli sprawa jest pilna, zadzwoń: ${PHONE}.`,
+        `Wiadomość wysłana. Skontaktujemy się z Tobą telefonicznie lub e-mailowo, zwykle w ciągu 24 godzin. Jeśli sprawa jest pilna, zadzwoń: ${PHONE}.`,
       );
     } catch {
       setStep('contact');
@@ -223,7 +227,7 @@ export default function ChatWidget() {
             <Box sx={{ flex: 1, minWidth: 0 }}>
               <Typography sx={{ fontWeight: 700, lineHeight: 1.2 }}>{OWNER_NAME}</Typography>
               <Typography variant="caption" sx={{ opacity: 0.9 }}>
-                Radca prawny · odpowiadam e-mailem
+                Radca prawny · opisz swoją sprawę
               </Typography>
             </Box>
             <IconButton
@@ -318,6 +322,17 @@ export default function ChatWidget() {
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  sx={{ mb: 1.5 }}
+                />
+                <TextField
+                  label="Numer telefonu"
+                  type="tel"
+                  size="small"
+                  fullWidth
+                  required
+                  autoComplete="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   sx={{ mb: 1 }}
                 />
                 {/* pole-pułapka, niewidoczne dla ludzi */}
@@ -428,7 +443,7 @@ export default function ChatWidget() {
               fullWidth
               multiline
               maxRows={3}
-              placeholder={step === 'message' ? 'Napisz wiadomość…' : 'Najpierw podaj dane powyżej'}
+              placeholder={step === 'message' ? 'Opisz swój problem…' : 'Najpierw zostaw dane kontaktowe powyżej'}
               disabled={step !== 'message'}
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
@@ -498,7 +513,7 @@ export default function ChatWidget() {
               color: 'text.primary',
             }}
           >
-            Cześć! Masz pytanie? Napisz do mnie.
+            Opisz swój problem prawny tutaj.
           </Typography>
           <IconButton size="small" aria-label="Ukryj zachętę" onClick={dismissTeaser}>
             <CloseIcon fontSize="small" />
@@ -513,7 +528,7 @@ export default function ChatWidget() {
         type="button"
         onClick={() => (open ? setOpen(false) : openChat())}
         aria-expanded={open}
-        aria-label={open ? 'Zamknij czat' : 'Otwórz czat: napisz do mnie'}
+        aria-label={open ? 'Zamknij czat' : 'Otwórz czat: opisz swój problem'}
         sx={{
           position: 'fixed',
           right: { xs: 16, md: 24 },
@@ -585,7 +600,7 @@ export default function ChatWidget() {
           <Typography
             sx={{ display: { xs: 'none', md: 'block' }, fontWeight: 700, whiteSpace: 'nowrap' }}
           >
-            Napisz do mnie
+            Opisz swój problem
           </Typography>
         )}
       </Box>
