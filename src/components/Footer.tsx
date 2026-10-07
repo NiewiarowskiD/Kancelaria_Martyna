@@ -40,8 +40,8 @@ export default function Footer() {
             <Box
               component="img"
               src="/logo.svg"
-              alt="Martyna Obecna – Kancelaria Radcy Prawnego"
-              sx={{ width: 260, maxWidth: '100%', height: 'auto', display: 'block', mb: 2 }}
+              alt="Martyna Obecna – Kancelaria Prawna"
+              sx={{ width: 300, maxWidth: '100%', height: 'auto', display: 'block', mb: 2 }}
             />
             <Typography variant="body2" sx={{ color: 'text.secondary', maxWidth: 340 }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

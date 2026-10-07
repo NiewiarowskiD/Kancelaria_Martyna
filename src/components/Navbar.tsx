@@ -77,9 +77,9 @@ export default function Navbar() {
             <Box
               component="img"
               src="/logo.svg"
-              alt="Martyna Obecna – Kancelaria Radcy Prawnego"
+              alt="Martyna Obecna – Kancelaria Prawna"
               sx={{
-                height: { xs: 44, md: 46, lg: 54 },
+                height: { xs: 42, md: 42, lg: 60 },
                 width: 'auto',
                 display: 'block',
               }}
