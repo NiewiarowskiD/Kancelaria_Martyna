@@ -14,6 +14,7 @@ import Blog from './pages/Blog';
 import MobileCtaBar, { MOBILE_CTA_HEIGHT } from './components/MobileCtaBar';
 import Specializations from './pages/Specializations';
 import CookieBanner from './components/CookieBanner';
+import ChatWidget from './components/ChatWidget';
 import Navbar from './components/Navbar';
 import Price from './pages/PriceList';
 import Rodo from './pages/Rodo';
@@ -145,6 +146,7 @@ export function AppRoutes() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+      <ChatWidget />
       <CookieBanner />
     </ThemeProvider>
   );
